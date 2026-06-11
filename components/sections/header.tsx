@@ -1,0 +1,150 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Menu, X, ArrowRight, User } from 'lucide-react'
+
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  // Track scroll position to adjust header opacity/size
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const menuItems = [
+    { label: 'Heritage', href: '#about' },
+    { label: 'Programs', href: '#programs' },
+    { label: 'Admissions', href: '#admissions' },
+    { label: 'Learning Hub', href: '#portals' },
+    { label: 'Gallery', href: '#gallery' },
+    { label: 'Success Stories', href: '#testimonials' },
+    { label: 'Inquiries', href: '#contact' },
+  ]
+
+  return (
+    <header 
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled 
+          ? 'py-2 bg-[#050505]/80 backdrop-blur-xl border-b border-[#aa7217]/15 shadow-[0_4px_30px_rgba(0,0,0,0.8)]' 
+          : 'py-3 bg-transparent border-b border-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          
+          {/* LOGO: Premium emblem */}
+          <Link 
+            href="#"
+            className="flex items-center group shrink-0"
+          >
+            <Image
+              src="/logo.png"
+              alt="Pinnacle Culinary Academy"
+              width={160}
+              height={100}
+              className={`object-contain transition-all duration-500 drop-shadow-[0_2px_8px_rgba(170,114,23,0.3)] group-hover:drop-shadow-[0_2px_12px_rgba(170,114,23,0.5)] ${
+                scrolled ? 'h-12 w-auto' : 'h-16 w-auto'
+              }`}
+              priority
+            />
+          </Link>
+
+          {/* DESKTOP MENU: Modern typography and underlines */}
+          <nav className="hidden xl:flex items-center gap-8">
+            {menuItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="font-inter text-xs tracking-wider uppercase text-gray-300 hover:text-[#aa7217] transition-colors relative py-1 group"
+              >
+                {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#aa7217] transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+          </nav>
+
+          {/* CTA ACTIONS */}
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Student Portal Link */}
+            <a 
+              href="#portals"
+              className="text-xs uppercase tracking-wider font-semibold text-[#FAF9F6] hover:text-[#aa7217] flex items-center gap-1.5 transition-colors border border-white/10 hover:border-[#aa7217]/40 px-3.5 py-2 rounded bg-white/5"
+            >
+              <User className="w-3.5 h-3.5 text-[#aa7217]" />
+              <span>Portal</span>
+            </a>
+
+            {/* Main Action CTA */}
+            <a 
+              href="#admissions"
+              className="px-5 py-2 bg-[#700200] hover:bg-[#8f0300] text-white border border-[#aa7217]/20 text-xs font-semibold rounded uppercase tracking-wider transition-all duration-300 shadow-[0_4px_15px_rgba(112,2,0,0.3)] hover:shadow-[0_4px_20px_rgba(170,114,23,0.3)]"
+            >
+              Apply Online
+            </a>
+          </div>
+
+          {/* MOBILE MENU TOGGLE */}
+          <button
+            className="xl:hidden text-[#FAF9F6] hover:text-[#aa7217] transition-colors p-1"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* MOBILE DRAWER: Cinematic glass slide-down */}
+        <div 
+          className={`xl:hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+            mobileMenuOpen 
+              ? 'max-h-[500px] opacity-100 mt-4 pt-4 border-t border-[#aa7217]/15' 
+              : 'max-h-0 opacity-0 pointer-events-none'
+          }`}
+        >
+          <nav className="flex flex-col gap-4 py-2">
+            {menuItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="font-inter text-xs tracking-widest uppercase text-gray-300 hover:text-[#aa7217] transition-colors py-1"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+            
+            <div className="flex flex-col sm:flex-row gap-3 mt-4 pt-4 border-t border-white/5">
+              <a 
+                href="#portals"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-xs uppercase tracking-widest font-semibold text-[#FAF9F6] hover:text-[#aa7217] flex items-center justify-center gap-1.5 transition-colors border border-white/10 px-4 py-3 rounded bg-white/5"
+              >
+                <User className="w-4 h-4 text-[#aa7217]" />
+                <span>Student Portal</span>
+              </a>
+              <a 
+                href="#admissions"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 bg-[#700200] text-center text-white border border-[#aa7217]/20 text-xs font-semibold rounded uppercase tracking-widest transition-all duration-300 shadow-md flex items-center justify-center gap-2"
+              >
+                <span>Apply Online</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+  )
+}

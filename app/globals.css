@@ -1,0 +1,342 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --font-playfair: var(--font-playfair), 'Playfair Display Fallback';
+  --font-cormorant: var(--font-cormorant), 'Cormorant Garamond Fallback';
+  --font-poppins: var(--font-poppins), 'Poppins Fallback';
+  --font-inter: var(--font-inter), 'Inter Fallback';
+
+  --color-primary: #700200; /* Deep Red */
+  --color-accent: #aa7217; /* Deep Gold */
+  --color-background: #050505; /* Black */
+  --color-foreground: #FAF9F6; /* Off White */
+  --color-cream: #FFF5EB; /* Warm Cream */
+  
+  --color-gold: #aa7217;
+  --color-red: #700200;
+  --color-black: #050505;
+  --color-offwhite: #FAF9F6;
+  --color-warmcream: #FFF5EB;
+
+  --color-glass-light: rgba(250, 249, 246, 0.03);
+  --color-glass-strong: rgba(10, 10, 10, 0.75);
+  
+  --radius: 0.625rem;
+}
+
+:root {
+  /* Culinary Premium Color System - Dark Luxury Theme */
+  --primary: #700200;
+  --primary-rgb: 112, 2, 0;
+  --accent: #aa7217;
+  --accent-rgb: 170, 114, 23;
+  --background: #050505;
+  --foreground: #FAF9F6;
+  --cream: #FFF5EB;
+  
+  /* Glass morphism utilities - dark luxury theme */
+  --glass-light: rgba(250, 249, 246, 0.03);
+  --glass-strong: rgba(10, 10, 10, 0.75);
+  
+  /* Spacing */
+  --radius: 0.625rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #202020;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #aa7217;
+}
+
+@layer components {
+  /* Premium Glassmorphism */
+  .glass-light {
+    background: rgba(250, 249, 246, 0.02);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(250, 249, 246, 0.05);
+    border-radius: 1rem;
+  }
+  
+  .glass-strong {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(170, 114, 23, 0.15);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .glass-nav {
+    background: rgba(5, 5, 5, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(170, 114, 23, 0.1);
+  }
+
+  /* Luxury Typography scale */
+  .heading-hero {
+    font-family: var(--font-playfair), serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #FAF9F6;
+  }
+
+  .heading-lg {
+    font-family: var(--font-playfair), serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #FAF9F6;
+  }
+
+  .heading-md {
+    font-family: var(--font-playfair), serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: #FAF9F6;
+  }
+
+  .heading-sm {
+    font-family: var(--font-cormorant), serif;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 600;
+    color: #FAF9F6;
+  }
+
+  .subheading {
+    font-family: var(--font-inter), sans-serif;
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    font-weight: 400;
+    color: #FAF9F6;
+    opacity: 0.8;
+  }
+
+  .body-text {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 0.95rem;
+    color: #FAF9F6;
+    opacity: 0.75;
+    line-height: 1.7;
+  }
+
+  .caption-text {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 0.8rem;
+    color: #FAF9F6;
+    opacity: 0.6;
+    letter-spacing: 0.05em;
+  }
+
+  /* Premium buttons */
+  .btn-primary {
+    @apply px-8 py-3.5 bg-primary hover:bg-[#8f0300] text-white font-semibold rounded-lg transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg relative overflow-hidden inline-flex items-center justify-center;
+    border: 1px solid rgba(170, 114, 23, 0.3);
+    box-shadow: 0 4px 20px rgba(112, 2, 0, 0.3);
+  }
+  
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: 0.5s;
+  }
+
+  .btn-primary:hover::after {
+    left: 100%;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3.5 border border-accent/40 text-accent hover:text-white hover:bg-accent/10 font-semibold rounded-lg transition-all duration-300 cursor-pointer inline-flex items-center justify-center;
+    backdrop-filter: blur(5px);
+  }
+
+  .btn-gold {
+    @apply px-8 py-3.5 bg-accent hover:bg-[#be801c] text-black font-semibold rounded-lg transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg inline-flex items-center justify-center;
+    box-shadow: 0 4px 20px rgba(170, 114, 23, 0.25);
+  }
+
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  /* Breathing Glow for Logo */
+  .animate-breathing-logo {
+    animation: logoBreathing 3s ease-in-out infinite;
+  }
+
+  @keyframes logoBreathing {
+    0%, 100% {
+      transform: scale(0.96);
+      filter: drop-shadow(0 0 10px rgba(170, 114, 23, 0.3));
+    }
+    50% {
+      transform: scale(1.02);
+      filter: drop-shadow(0 0 25px rgba(170, 114, 23, 0.7));
+    }
+  }
+
+  .animate-breathing-text {
+    animation: textBreathing 3s ease-in-out infinite;
+  }
+
+  @keyframes textBreathing {
+    0%, 100% {
+      opacity: 0.6;
+      text-shadow: 0 0 4px rgba(170, 114, 23, 0.1);
+    }
+    50% {
+      opacity: 1;
+      text-shadow: 0 0 12px rgba(170, 114, 23, 0.5);
+    }
+  }
+
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Slide in from left */
+  .animate-slide-in-left {
+    animation: slideInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Slide in from right */
+  .animate-slide-in-right {
+    animation: slideInRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Slide in from top */
+  .animate-slide-in-top {
+    animation: slideInTop 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideInTop {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scale in */
+  .animate-scale-in {
+    animation: scaleIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Splash Screen Hidden Failsafe */
+  .splash-screen {
+    transition: opacity 0.8s ease;
+  }
+
+  .splash-screen.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: -10 !important;
+  }
+
+  /* Delayed Fade-in for school name and subtext */
+  .animate-fade-in-delayed {
+    animation: fadeInDelayed 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  @keyframes fadeInDelayed {
+    0% {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    35% {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+    background-color: #050505;
+    color: #FAF9F6;
+  }
+  
+  body {
+    background-color: #050505;
+    color: #FAF9F6;
+    overflow-x: hidden;
+  }
+}
