@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { Maximize2, X } from 'lucide-react'
+import ScrollReveal from '@/components/ui/scroll-reveal'
 
 interface GalleryImage {
   id: number
@@ -53,22 +54,6 @@ const galleryImages: GalleryImage[] = [
 export default function GallerySection() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.15 }
-    )
-
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
 
   const categories = ['All', 'Techniques', 'Pastry', 'Cuisine', 'Facilities', 'Events']
   const filteredImages = selectedCategory === 'All' 
@@ -76,7 +61,7 @@ export default function GallerySection() {
     : galleryImages.filter(img => img.category === selectedCategory)
 
   return (
-    <section id="gallery" ref={ref} className="py-28 bg-[#050505] relative overflow-hidden">
+    <section id="gallery" className="py-28 bg-[#050505] relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#aa7217]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -85,7 +70,7 @@ export default function GallerySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Editorial Title */}
-        <div className="text-center mb-16 space-y-4">
+        <ScrollReveal direction="up" className="text-center mb-16 space-y-4">
           <p className="text-[#aa7217] font-inter text-xs tracking-[0.3em] uppercase font-semibold">
             Our Gallery
           </p>
@@ -96,10 +81,10 @@ export default function GallerySection() {
             </span>
           </h2>
           <div className="w-16 h-[1px] bg-[#aa7217] mx-auto mt-6" />
-        </div>
+        </ScrollReveal>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        <ScrollReveal direction="up" delay={0.05} className="flex flex-wrap justify-center gap-3 mb-16">
           {categories.map((category) => (
             <button
               key={category}
@@ -113,18 +98,17 @@ export default function GallerySection() {
               {category}
             </button>
           ))}
-        </div>
+        </ScrollReveal>
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredImages.map((image, index) => (
-            <button
+            <ScrollReveal
               key={image.id}
+              direction="up"
+              delay={index * 0.05}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/5 hover:border-[#aa7217]/30 transition-all duration-500 text-left outline-none"
               onClick={() => setSelectedImage(image.id)}
-              className={`group relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/5 hover:border-[#aa7217]/30 transition-all duration-500 text-left outline-none ${
-                isVisible ? 'animate-scale-in' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${index * 0.05}s` }}
             >
               {/* Full-width Image */}
               <div className="absolute inset-0 w-full h-full">
@@ -158,12 +142,12 @@ export default function GallerySection() {
                   <Maximize2 className="w-3.5 h-3.5 text-[#aa7217]" />
                 </div>
               </div>
-            </button>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-3 gap-8 mt-24 pt-16 border-t border-white/10">
+        <ScrollReveal direction="up" delay={0.1} className="grid grid-cols-3 gap-8 mt-24 pt-16 border-t border-white/10">
           <div className="text-center">
             <p className="text-3xl font-bold text-[#aa7217] font-playfair">1,200+</p>
             <p className="text-[10px] uppercase tracking-wider text-gray-400 font-inter mt-1.5">Masterclass Videos</p>
@@ -176,14 +160,14 @@ export default function GallerySection() {
             <p className="text-3xl font-bold text-[#aa7217] font-playfair">15</p>
             <p className="text-[10px] uppercase tracking-wider text-gray-400 font-inter mt-1.5">Annual Competitions</p>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* CTA */}
-        <div className="mt-16 text-center">
+        <ScrollReveal direction="up" delay={0.15} className="mt-16 text-center">
           <button className="btn-primary text-xs uppercase tracking-wider font-semibold">
             Request Media Access
           </button>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* LIGHTBOX MODAL */}

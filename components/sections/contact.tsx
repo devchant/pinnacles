@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { MapPin, Phone, Mail, Clock, Send, ShieldCheck, Check } from 'lucide-react'
+import ScrollReveal from '@/components/ui/scroll-reveal'
 
 interface ContactInfo {
   icon: React.ReactNode
@@ -19,22 +20,6 @@ export default function ContactSection() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
 
   const contactInfo: ContactInfo[] = [
     {
@@ -81,7 +66,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" ref={ref} className="py-28 bg-[#050505] relative overflow-hidden">
+    <section id="contact" className="py-28 bg-[#050505] relative overflow-hidden">
       {/* Background orbs */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-40 left-0 w-96 h-96 bg-[#700200]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -91,7 +76,7 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Editorial Title */}
-        <div className="text-center mb-20 space-y-4">
+        <ScrollReveal direction="up" className="text-center mb-20 space-y-4">
           <p className="text-[#aa7217] font-inter text-xs tracking-[0.3em] uppercase font-semibold">
             Inquiries
           </p>
@@ -102,17 +87,16 @@ export default function ContactSection() {
             </span>
           </h2>
           <div className="w-16 h-[1px] bg-[#aa7217] mx-auto mt-6" />
-        </div>
+        </ScrollReveal>
 
         {/* Contact Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {contactInfo.map((info, index) => (
-            <div
+            <ScrollReveal
               key={info.title}
-              className={`glass-strong p-6 rounded-xl border border-white/5 text-center transition-all duration-300 hover:border-[#aa7217]/30 hover:-translate-y-1 ${
-                isVisible ? 'animate-scale-in' : 'opacity-0'
-              }`}
-              style={{ animationDelay: `${index * 0.05}s` }}
+              direction="up"
+              delay={index * 0.05}
+              className="glass-strong p-6 rounded-xl border border-white/5 text-center transition-all duration-300 hover:border-[#aa7217]/30 hover:-translate-y-1"
             >
               <div className="mx-auto w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-4 border border-white/5">
                 {info.icon}
@@ -120,7 +104,7 @@ export default function ContactSection() {
               <h3 className="font-playfair text-sm text-[#FAF9F6] font-semibold mb-1">{info.title}</h3>
               <p className="text-[10px] uppercase text-gray-500 font-inter tracking-wider mb-2">{info.details}</p>
               <p className="text-xs text-gray-300 font-inter leading-relaxed">{info.value}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
@@ -128,7 +112,7 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
           {/* LEFT: Contact Form */}
-          <div className={`lg:col-span-7 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
+          <ScrollReveal direction="left" delay={0.1} className="lg:col-span-7">
             <div className="glass-strong p-8 rounded-2xl border border-white/5 flex flex-col justify-between h-full">
               <div>
                 <h3 className="font-playfair text-xl font-bold text-[#FAF9F6] mb-2">Request Catalogues & Consultation</h3>
@@ -223,10 +207,10 @@ export default function ContactSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* RIGHT: Custom Luxury Map Graphic & Campus tours details */}
-          <div className={`lg:col-span-5 ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
+          <ScrollReveal direction="right" delay={0.2} className="lg:col-span-5">
             <div className="glass-strong p-8 rounded-2xl border border-white/5 h-full flex flex-col justify-between">
               <div>
                 <h3 className="font-playfair text-xl font-bold text-[#FAF9F6] mb-6">Our Campus Grounds</h3>
@@ -280,7 +264,7 @@ export default function ContactSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
       </div>

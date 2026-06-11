@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { ChefHat, Cake, Wine, Flame, Utensils, Briefcase, Clock, ArrowRight } from 'lucide-react'
+import ScrollReveal from '@/components/ui/scroll-reveal'
 
 interface Program {
   id: number
@@ -14,22 +15,6 @@ interface Program {
 
 export default function ProgramsSection() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
 
   const programs: Program[] = [
     {
@@ -83,7 +68,7 @@ export default function ProgramsSection() {
   ]
 
   return (
-    <section id="programs" ref={ref} className="py-28 bg-[#050505] relative overflow-hidden">
+    <section id="programs" className="py-28 bg-[#050505] relative overflow-hidden">
       {/* Ambient glowing circles */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 right-0 w-[450px] h-[450px] bg-[#aa7217]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -93,7 +78,7 @@ export default function ProgramsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Editorial Header */}
-        <div className="text-center mb-20 space-y-4">
+        <ScrollReveal direction="up" className="text-center mb-20 space-y-4">
           <p className="text-[#aa7217] font-inter text-xs tracking-[0.3em] uppercase font-semibold">
             Our Programs
           </p>
@@ -104,24 +89,23 @@ export default function ProgramsSection() {
             </span>
           </h2>
           <div className="w-16 h-[1px] bg-[#aa7217] mx-auto mt-6" />
-        </div>
+        </ScrollReveal>
 
         {/* Programs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (
-            <div
-              key={program.id}
-              onMouseEnter={() => setHoveredId(program.id)}
-              onMouseLeave={() => setHoveredId(null)}
-              className={`relative glass-strong p-8 rounded-2xl cursor-pointer transition-all duration-300 flex flex-col justify-between border border-white/5 ${
-                isVisible ? 'animate-scale-in' : 'opacity-0'
-              } ${hoveredId === program.id ? 'border-[#aa7217]/40 -translate-y-2' : ''}`}
-              style={{ 
-                animationDelay: `${index * 0.08}s`,
-                boxShadow: hoveredId === program.id ? '0 15px 35px rgba(170, 114, 23, 0.08)' : 'none'
-              }}
-            >
-              <div>
+            <ScrollReveal key={program.id} direction="up" delay={index * 0.07}>
+              <div
+                onMouseEnter={() => setHoveredId(program.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                className={`relative glass-strong p-8 rounded-2xl cursor-pointer transition-all duration-300 flex flex-col justify-between border ${
+                  hoveredId === program.id ? 'border-[#aa7217]/40 -translate-y-2' : 'border-white/5'
+                }`}
+                style={{ 
+                  boxShadow: hoveredId === program.id ? '0 15px 35px rgba(170, 114, 23, 0.08)' : 'none'
+                }}
+              >
+                <div>
                 {/* Icon & Duration */}
                 <div className="flex justify-between items-center mb-6">
                   <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#aa7217]/10 transition-colors">
@@ -167,12 +151,13 @@ export default function ProgramsSection() {
                   </button>
                 </div>
               </div>
-            </div>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Bottom Callout Section */}
-        <div className="mt-20 glass-light p-10 rounded-2xl border border-white/5 text-center max-w-4xl mx-auto relative overflow-hidden">
+        <ScrollReveal direction="up" delay={0.1} className="mt-20 glass-light p-10 rounded-2xl border border-white/5 text-center max-w-4xl mx-auto relative overflow-hidden">
           {/* Subtle accent border */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#aa7217] to-transparent" />
           
@@ -190,7 +175,7 @@ export default function ProgramsSection() {
               Download Syllabus Guide
             </a>
           </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

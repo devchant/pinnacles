@@ -79,7 +79,7 @@ export default function Header() {
         className={`w-full transition-all duration-500 ${
           scrolled 
             ? 'py-2 bg-[#050505]/80 backdrop-blur-xl border-b border-[#aa7217]/15 shadow-[0_4px_30px_rgba(0,0,0,0.8)]' 
-            : 'py-4 bg-transparent border-b border-transparent'
+            : 'py-4 xl:bg-transparent bg-[#050505]/90 xl:backdrop-blur-none backdrop-blur-md border-b border-transparent xl:border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -148,7 +148,7 @@ export default function Header() {
 
           {/* MOBILE DRAWER: Cinematic glass slide-down */}
           <div 
-            className={`xl:hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+            className={`xl:hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden bg-[#050505]/98 backdrop-blur-xl ${
               mobileMenuOpen 
                 ? 'max-h-[500px] opacity-100 mt-4 pt-4 border-t border-[#aa7217]/15' 
                 : 'max-h-0 opacity-0 pointer-events-none'

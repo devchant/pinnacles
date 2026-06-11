@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { BookOpen, Award, Compass, Database, ShieldAlert, ArrowUpRight, GraduationCap } from 'lucide-react'
+import ScrollReveal from '@/components/ui/scroll-reveal'
 
 interface Portal {
   id: number
@@ -13,22 +14,6 @@ interface Portal {
 
 export default function PortalsSection() {
   const [selectedPortal, setSelectedPortal] = useState<number | null>(null)
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
 
   const portals: Portal[] = [
     {
@@ -62,7 +47,7 @@ export default function PortalsSection() {
   ]
 
   return (
-    <section id="portals" ref={ref} className="py-28 bg-[#050505] relative overflow-hidden">
+    <section id="portals" className="py-28 bg-[#050505] relative overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/2 -left-96 w-96 h-96 bg-[#700200]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -72,7 +57,7 @@ export default function PortalsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Editorial Title */}
-        <div className="text-center mb-20 space-y-4">
+        <ScrollReveal direction="up" className="text-center mb-20 space-y-4">
           <p className="text-[#aa7217] font-inter text-xs tracking-[0.3em] uppercase font-semibold">
             Learning Hubs
           </p>
@@ -83,21 +68,22 @@ export default function PortalsSection() {
             </span>
           </h2>
           <div className="w-16 h-[1px] bg-[#aa7217] mx-auto mt-6" />
-        </div>
+        </ScrollReveal>
 
         {/* Portals Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {portals.map((portal, index) => (
-            <div
+            <ScrollReveal
               key={portal.id}
-              onClick={() => setSelectedPortal(selectedPortal === portal.id ? null : portal.id)}
+              direction="up"
+              delay={index * 0.08}
               className={`glass-strong p-8 rounded-2xl cursor-pointer transition-all duration-300 text-left border relative group select-none ${
-                isVisible ? 'animate-scale-in' : 'opacity-0'
-              } ${selectedPortal === portal.id ? 'border-[#aa7217]/50' : 'border-white/5'}`}
+                selectedPortal === portal.id ? 'border-[#aa7217]/50' : 'border-white/5'
+              }`}
               style={{ 
-                animationDelay: `${index * 0.1}s`,
                 boxShadow: selectedPortal === portal.id ? '0 12px 24px rgba(170, 114, 23, 0.05)' : 'none'
               }}
+              onClick={() => setSelectedPortal(selectedPortal === portal.id ? null : portal.id)}
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#aa7217]/10 transition-colors">
@@ -127,12 +113,12 @@ export default function PortalsSection() {
                   ))}
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Central Entrance Gateway */}
-        <div className="glass-light p-10 rounded-2xl border border-white/5 max-w-4xl mx-auto relative overflow-hidden">
+        <ScrollReveal direction="up" delay={0.1} className="glass-light p-10 rounded-2xl border border-white/5 max-w-4xl mx-auto relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#700200] to-transparent" />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -152,7 +138,7 @@ export default function PortalsSection() {
               </button>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

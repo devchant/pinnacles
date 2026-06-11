@@ -2,24 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Award, BookOpen, Globe, Quote, Users } from 'lucide-react'
+import ScrollReveal from '@/components/ui/scroll-reveal'
 
 export default function AboutSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
 
   const features = [
     {
@@ -45,7 +30,7 @@ export default function AboutSection() {
   ]
 
   return (
-    <section id="about" ref={ref} className="py-28 bg-[#050505] relative overflow-hidden">
+    <section id="about" className="py-28 bg-[#050505] relative overflow-hidden">
       {/* Background gradients */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#700200]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -55,7 +40,7 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Editorial Title */}
-        <div className="text-center mb-20 space-y-4">
+        <ScrollReveal direction="up" className="text-center mb-20 space-y-4">
           <p className="text-[#aa7217] font-inter text-xs tracking-[0.3em] uppercase font-semibold">
             Our Heritage
           </p>
@@ -66,13 +51,13 @@ export default function AboutSection() {
             </span>
           </h2>
           <div className="w-16 h-[1px] bg-[#aa7217] mx-auto mt-6" />
-        </div>
+        </ScrollReveal>
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* LEFT: Text & Core Features */}
-          <div className={`lg:col-span-7 space-y-8 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
+          <ScrollReveal direction="left" delay={0.1} className="lg:col-span-7 space-y-8">
             <h3 className="font-playfair text-3xl font-semibold text-[#FAF9F6]">
               Where culinary passion meets{' '}
               <span className="font-cormorant italic text-[#aa7217]">clinical precision</span>.
@@ -100,10 +85,10 @@ export default function AboutSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* RIGHT: High-End Chef Quote with custom gold border */}
-          <div className={`lg:col-span-5 ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
+          <ScrollReveal direction="right" delay={0.2} className="lg:col-span-5">
             <div className="relative group">
               {/* Decorative behind glow */}
               <div className="absolute -inset-1 bg-gradient-to-tr from-[#700200] to-[#aa7217] rounded-2xl blur-lg opacity-30 group-hover:opacity-45 transition duration-1000" />
@@ -127,11 +112,11 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Feature stats banner at the bottom */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 pt-16 border-t border-white/10">
+        <ScrollReveal direction="up" delay={0.1} className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 pt-16 border-t border-white/10">
           <div className="text-center group">
             <p className="text-4xl md:text-5xl font-bold text-[#aa7217] font-playfair tracking-tight group-hover:scale-105 transition-transform duration-300">
               3,200+
@@ -156,7 +141,7 @@ export default function AboutSection() {
             </p>
             <p className="text-xs uppercase tracking-wider text-gray-400 mt-2 font-inter">Michelin Star Faculty</p>
           </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

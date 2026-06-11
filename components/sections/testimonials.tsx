@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { ArrowLeft, ArrowRight, Quote, Star } from 'lucide-react'
+import ScrollReveal from '@/components/ui/scroll-reveal'
 
 interface Testimonial {
   id: number
@@ -65,22 +66,6 @@ const testimonials: Testimonial[] = [
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
@@ -100,7 +85,7 @@ export default function TestimonialsSection() {
   }
 
   return (
-    <section id="testimonials" ref={ref} className="py-28 bg-[#050505] relative overflow-hidden">
+    <section id="testimonials" className="py-28 bg-[#050505] relative overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute inset-0 z-0">
         <div className="absolute bottom-10 left-1/3 w-96 h-96 bg-[#700200]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -109,21 +94,18 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Editorial Title */}
-        <div className="text-center mb-20 space-y-4">
+        <ScrollReveal direction="up" className="text-center mb-20 space-y-4">
           <p className="text-[#aa7217] font-inter text-xs tracking-[0.3em] uppercase font-semibold">
-            Success Stories
-          </p>
-          <h2 className="heading-lg max-w-3xl mx-auto font-playfair font-bold text-[#FAF9F6]">
             Voices of Our{' '}
             <span className="font-cormorant italic text-[#aa7217] font-light">
               Distinguished Alumni
             </span>
-          </h2>
+          </p>
           <div className="w-16 h-[1px] bg-[#aa7217] mx-auto mt-6" />
-        </div>
+        </ScrollReveal>
 
         {/* Testimonials Slider */}
-        <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+        <ScrollReveal direction="up" delay={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {getVisibleTestimonials().map((testimonial, idx) => (
               <div
@@ -201,10 +183,10 @@ export default function TestimonialsSection() {
               <ArrowRight className="w-5 h-5 text-gray-300" />
             </button>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Global Statistics Panel */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24 pt-16 border-t border-white/10">
+        <ScrollReveal direction="up" delay={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24 pt-16 border-t border-white/10">
           <div className="text-center">
             <p className="text-4xl font-bold font-playfair text-[#aa7217]">3,000+</p>
             <p className="text-[10px] uppercase tracking-wider text-gray-400 font-inter mt-2">Active Culinarians Registry</p>
@@ -217,7 +199,7 @@ export default function TestimonialsSection() {
             <p className="text-4xl font-bold font-playfair text-[#aa7217]">4.9 / 5</p>
             <p className="text-[10px] uppercase tracking-wider text-gray-400 font-inter mt-2">Alumni Satisfaction Index</p>
           </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

@@ -27,8 +27,8 @@ export default function CinematicLoader({ onIntroEnd }: CinematicLoaderProps) {
     setIsMobile(mobileActive)
     
     const src = mobileActive
-      ? 'https://res.cloudinary.com/dlctwbems/video/upload/v1781139356/Firefly_779856_1.mp4'
-      : 'https://res.cloudinary.com/dlctwbems/video/upload/v1781139653/Firefly_779856.mp4'
+      ? 'https://res.cloudinary.com/dlctwbems/video/upload/f_auto,q_auto/v1781139356/Firefly_779856_1.mp4'
+      : 'https://res.cloudinary.com/dlctwbems/video/upload/f_auto,q_auto/v1781139653/Firefly_779856.mp4'
     
     setVideoSrc(src)
   }, [])
@@ -113,7 +113,7 @@ export default function CinematicLoader({ onIntroEnd }: CinematicLoaderProps) {
     if (phase === 'playing-video') {
       const timer = setTimeout(() => {
         setPhase('dissolving')
-      }, 7200)
+      }, 8000)
       return () => clearTimeout(timer)
     }
 
@@ -144,6 +144,15 @@ export default function CinematicLoader({ onIntroEnd }: CinematicLoaderProps) {
           : 'z-[9999] bg-[#050505]'
       }`}
     >
+      {/* Preload hero image while splash is visible for fast LCP after transition */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="https://res.cloudinary.com/dlctwbems/image/upload/f_auto,q_auto,w_1920/v1781173997/ChatGPT_Image_Jun_11_2026_11_32_18_AM.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute opacity-0 w-0 h-0 pointer-events-none"
+        fetchPriority="high"
+      />
       {/* Video Element */}
       {videoSrc && (
         <video
