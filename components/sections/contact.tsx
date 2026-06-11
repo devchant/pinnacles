@@ -40,14 +40,14 @@ export default function ContactSection() {
     {
       icon: <MapPin className="w-5 h-5 text-[#aa7217]" />,
       title: 'Academy Campus',
-      details: 'Culinary District',
-      value: '2500 Culinary Boulevard, San Francisco, CA 94107',
+      details: 'Jos, Plateau State',
+      value: 'Jos, Plateau State, Nigeria',
     },
     {
       icon: <Phone className="w-5 h-5 text-[#aa7217]" />,
       title: 'Admissions Office',
       details: 'Direct Line',
-      value: '+1 (555) 123-4567',
+      value: '+234 803 303 5133',
     },
     {
       icon: <Mail className="w-5 h-5 text-[#aa7217]" />,
@@ -58,7 +58,7 @@ export default function ContactSection() {
     {
       icon: <Clock className="w-5 h-5 text-[#aa7217]" />,
       title: 'Operating Hours',
-      details: 'Pacific Time',
+      details: 'West Africa Time',
       value: 'Mon - Fri • 9:00 AM - 6:00 PM',
     },
   ]
