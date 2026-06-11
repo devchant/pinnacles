@@ -73,44 +73,43 @@ export default function PortalsSection() {
         {/* Portals Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {portals.map((portal, index) => (
-            <ScrollReveal
-              key={portal.id}
-              direction="up"
-              delay={index * 0.08}
-              className={`glass-strong p-8 rounded-2xl cursor-pointer transition-all duration-300 text-left border relative group select-none ${
-                selectedPortal === portal.id ? 'border-[#aa7217]/50' : 'border-white/5'
-              }`}
-              style={{ 
-                boxShadow: selectedPortal === portal.id ? '0 12px 24px rgba(170, 114, 23, 0.05)' : 'none'
-              }}
-              onClick={() => setSelectedPortal(selectedPortal === portal.id ? null : portal.id)}
-            >
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#aa7217]/10 transition-colors">
-                  {portal.icon}
+            <ScrollReveal key={portal.id} direction="up" delay={index * 0.08}>
+              <div
+                onClick={() => setSelectedPortal(selectedPortal === portal.id ? null : portal.id)}
+                className={`glass-strong p-8 rounded-2xl cursor-pointer transition-all duration-300 text-left border relative group select-none ${
+                  selectedPortal === portal.id ? 'border-[#aa7217]/50' : 'border-white/5'
+                }`}
+                style={{ 
+                  boxShadow: selectedPortal === portal.id ? '0 12px 24px rgba(170, 114, 23, 0.05)' : 'none'
+                }}
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#aa7217]/10 transition-colors">
+                    {portal.icon}
+                  </div>
+                  <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#aa7217]/40 group-hover:bg-white/5 transition-all">
+                    <ArrowUpRight className={`w-4 h-4 text-gray-400 group-hover:text-[#aa7217] transition-transform ${
+                      selectedPortal === portal.id ? 'rotate-45' : ''
+                    }`} />
+                  </div>
                 </div>
-                <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#aa7217]/40 group-hover:bg-white/5 transition-all">
-                  <ArrowUpRight className={`w-4 h-4 text-gray-400 group-hover:text-[#aa7217] transition-transform ${
-                    selectedPortal === portal.id ? 'rotate-45' : ''
-                  }`} />
-                </div>
-              </div>
 
-              <h3 className="font-playfair text-xl font-bold text-[#FAF9F6] mb-3">{portal.title}</h3>
-              <p className="text-sm text-gray-400 font-inter leading-relaxed mb-4">{portal.description}</p>
+                <h3 className="font-playfair text-xl font-bold text-[#FAF9F6] mb-3">{portal.title}</h3>
+                <p className="text-sm text-gray-400 font-inter leading-relaxed mb-4">{portal.description}</p>
 
-              {/* Accordion Details */}
-              <div className={`transition-all duration-500 overflow-hidden ${
-                selectedPortal === portal.id ? 'max-h-60 opacity-100 mt-6 pt-6 border-t border-white/10' : 'max-h-0 opacity-0'
-              }`}>
-                <p className="text-[10px] uppercase tracking-widest text-[#aa7217] font-semibold mb-3">Key Resources:</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {portal.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#aa7217]" />
-                      <span className="text-xs text-gray-300 font-inter">{feature}</span>
-                    </div>
-                  ))}
+                {/* Accordion Details */}
+                <div className={`transition-all duration-500 overflow-hidden ${
+                  selectedPortal === portal.id ? 'max-h-60 opacity-100 mt-6 pt-6 border-t border-white/10' : 'max-h-0 opacity-0'
+                }`}>
+                  <p className="text-[10px] uppercase tracking-widest text-[#aa7217] font-semibold mb-3">Key Resources:</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {portal.features.map((feature, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#aa7217]" />
+                        <span className="text-xs text-gray-300 font-inter">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </ScrollReveal>

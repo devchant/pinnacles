@@ -134,7 +134,7 @@ export default function CinematicLoader({ onIntroEnd }: CinematicLoaderProps) {
   // Calculate if the container is hidden based on state
   const isHidden = isMobile
     ? (!showSplashOverlay && !showVideo)
-    : (phase === 'completed')
+    : false
 
   return (
     <div 
