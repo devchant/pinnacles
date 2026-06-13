@@ -73,7 +73,7 @@ export default function Footer() {
                 />
               </div>
               <p className="text-xs text-gray-400 font-inter leading-relaxed max-w-sm">
-                Elevating culinary arts to elite standards since 1995. Built for future master chefs, sommeliers, and luxury restauranteurs who demand exceptional craft.
+                Raising outstanding culinary professionals in Nigeria and beyond. Based in Jos, Plateau State, we turn passion into culinary mastery with over a decade of proven expertise.
               </p>
               
               {/* Social Channels */}
@@ -141,7 +141,7 @@ export default function Footer() {
           {/* Bottom Copyright details */}
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-center">
             <p className="text-[11px] text-gray-500 font-inter">
-              © {new Date().getFullYear()} Pinnacle Culinary Academy. All rights reserved. 
+              Copyright © 2026 Pinnacle | Designed By Simplicity Concept
             </p>
             <div className="flex gap-6 mt-4 md:mt-0 text-[11px] text-gray-500 font-inter">
               <a href="#" className="hover:text-[#aa7217] transition-colors">Accessibility Statement</a>

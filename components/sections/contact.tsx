@@ -21,24 +21,36 @@ export default function ContactSection() {
   })
   const [submitted, setSubmitted] = useState(false)
 
+  useEffect(() => {
+    const handleSelectCourse = (e: Event) => {
+      const customEvent = e as CustomEvent<string>
+      setFormData(prev => ({
+        ...prev,
+        program: customEvent.detail
+      }))
+    }
+    window.addEventListener('select-course', handleSelectCourse)
+    return () => window.removeEventListener('select-course', handleSelectCourse)
+  }, [])
+
   const contactInfo: ContactInfo[] = [
     {
       icon: <MapPin className="w-5 h-5 text-[#aa7217]" />,
       title: 'Academy Campus',
-      details: 'Jos, Plateau State',
-      value: 'Jos, Plateau State, Nigeria',
+      details: 'Rayfield, Jos',
+      value: 'No 2, Rayfield Jos, Plateau State',
     },
     {
       icon: <Phone className="w-5 h-5 text-[#aa7217]" />,
-      title: 'Admissions Office',
+      title: 'Admissions Phone',
       details: 'Direct Line',
-      value: '+234 803 303 5133',
+      value: '08163977414',
     },
     {
       icon: <Mail className="w-5 h-5 text-[#aa7217]" />,
       title: 'Email Registry',
       details: 'General Inquiry',
-      value: 'admissions@pinnacle.edu',
+      value: 'Pinnaculeculinaryacademy@gmail.com',
     },
     {
       icon: <Clock className="w-5 h-5 text-[#aa7217]" />,
@@ -170,12 +182,15 @@ export default function ContactSection() {
                         className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-[#FAF9F6] focus:outline-none focus:border-[#aa7217]/60 focus:bg-white/10 transition-colors font-inter appearance-none cursor-pointer"
                       >
                         <option value="" className="bg-[#050505] text-gray-500">Select Academic Program</option>
-                        <option value="culinary" className="bg-[#050505] text-[#FAF9F6]">Grand Diplôme - Culinary Arts</option>
-                        <option value="pastry" className="bg-[#050505] text-[#FAF9F6]">Pastry & Baking Arts</option>
-                        <option value="sommelier" className="bg-[#050505] text-[#FAF9F6]">Master Sommelier & Beverage</option>
-                        <option value="asian" className="bg-[#050505] text-[#FAF9F6]">Pan-Asian Culinary Arts</option>
-                        <option value="italian" className="bg-[#050505] text-[#FAF9F6]">Authentic Italian & Mediterranean</option>
-                        <option value="management" className="bg-[#050505] text-[#FAF9F6]">Restaurant & Culinary Management</option>
+                        <option value="Cake Baking and Decoration" className="bg-[#050505] text-[#FAF9F6]">Cake Baking and Decoration</option>
+                        <option value="Cake Baking Beginners Level" className="bg-[#050505] text-[#FAF9F6]">Cake Baking Beginners Level</option>
+                        <option value="City & Guilds Level 2 Diploma in Food Preparation and Patisserie" className="bg-[#050505] text-[#FAF9F6]">City & Guilds Level 2 Diploma in Food Preparation and Patisserie</option>
+                        <option value="African Culinary Art" className="bg-[#050505] text-[#FAF9F6]">African Culinary Art</option>
+                        <option value="Pastries and Desserts" className="bg-[#050505] text-[#FAF9F6]">Pastries and Desserts</option>
+                        <option value="Continental Cuisine" className="bg-[#050505] text-[#FAF9F6]">Continental Cuisine</option>
+                        <option value="Beginner Food Photography and Styling" className="bg-[#050505] text-[#FAF9F6]">Beginner Food Photography and Styling</option>
+                        <option value="Advanced Food Photography and Styling" className="bg-[#050505] text-[#FAF9F6]">Advanced Food Photography and Styling</option>
+                        <option value="Entrepreneurship Management" className="bg-[#050505] text-[#FAF9F6]">Entrepreneurship Management</option>
                       </select>
                     </div>
 
@@ -234,16 +249,16 @@ export default function ContactSection() {
                     </div>
                     <div className="text-center">
                       <p className="font-playfair text-[#FAF9F6] font-semibold text-sm">Pinnacle Academy HQ</p>
-                      <p className="text-[10px] text-[#aa7217] uppercase tracking-wider mt-0.5 font-inter">Bay Area Atelier</p>
+                      <p className="text-[10px] text-[#aa7217] uppercase tracking-wider mt-0.5 font-inter">Jos Rayfield Campus</p>
                     </div>
                   </div>
                   
                   {/* Decorative Latitude Coordinates */}
                   <div className="absolute bottom-3 left-4 text-[9px] text-gray-600 font-mono tracking-widest">
-                    LAT 37.7749° N
+                    LAT 9.8965° N
                   </div>
                   <div className="absolute bottom-3 right-4 text-[9px] text-gray-600 font-mono tracking-widest">
-                    LON 122.4194° W
+                    LON 8.8583° E
                   </div>
                 </div>
               </div>

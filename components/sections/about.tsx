@@ -45,9 +45,9 @@ export default function AboutSection() {
             Our Heritage
           </p>
           <h2 className="heading-lg max-w-3xl mx-auto font-playfair font-bold text-[#FAF9F6]">
-            A Legacy of{' '}
+            Our Commitment to{' '}
             <span className="font-cormorant italic text-[#aa7217] font-light">
-              Gastronomic Excellence
+              Culinary Education Success
             </span>
           </h2>
           <div className="w-16 h-[1px] bg-[#aa7217] mx-auto mt-6" />
@@ -59,11 +59,11 @@ export default function AboutSection() {
           {/* LEFT: Text & Core Features */}
           <ScrollReveal direction="left" delay={0.1} className="lg:col-span-7 space-y-8">
             <h3 className="font-playfair text-3xl font-semibold text-[#FAF9F6]">
-              Where culinary passion meets{' '}
-              <span className="font-cormorant italic text-[#aa7217]">clinical precision</span>.
+              Raising outstanding professionals in{' '}
+              <span className="font-cormorant italic text-[#aa7217]">Nigeria and beyond</span>.
             </h3>
             <p className="body-text text-gray-300">
-              Founded in 1995, Pinnacle Culinary Academy was created to bridge the gap between traditional French discipline and modern culinary science. We believe cooking is an art form, a science, and a demanding physical craft that rewards dedication and creativity.
+              With over a decade of proven expertise, we have been raising outstanding culinary professionals in Nigeria and beyond. From our base in Jos, Plateau State, we have produced outstanding graduates who are making remarkable strides across the food and hospitality industry. Join the moving train and become part of a legacy of success.
             </p>
 
             {/* Custom Cards: Lifts on hover with gold borders */}
@@ -101,14 +101,14 @@ export default function AboutSection() {
                   </div>
                 </div>
 
-                <blockquote className="font-playfair text-xl italic text-[#FAF9F6] leading-relaxed mb-8">
-                  &quot;In our kitchen, there are no shortcuts. We do not just teach recipes—we teach how to think, feel, and create like a master culinarian.&quot;
+                <blockquote className="font-playfair text-2xl italic text-[#FAF9F6] leading-relaxed mb-8">
+                  &quot;If you can Dream it, You can Achieve it&quot;
                 </blockquote>
 
                 <div className="border-t border-white/10 pt-6">
-                  <p className="font-playfair text-lg text-[#FAF9F6] font-semibold">Chef Jean-Luc Moreau</p>
-                  <p className="text-xs text-[#aa7217] uppercase tracking-wider font-inter mt-1">Dean of Culinary Studies</p>
-                  <p className="text-[10px] text-gray-500 font-inter mt-0.5">Former Head Chef at Le Gabriel (3 Michelin Stars)</p>
+                  <p className="font-playfair text-lg text-[#FAF9F6] font-semibold">Pinnacle Joint</p>
+                  <p className="text-xs text-[#aa7217] uppercase tracking-wider font-inter mt-1">Culinary Leadership</p>
+                  <p className="text-[10px] text-gray-500 font-inter mt-0.5">Jos, Plateau State, Nigeria</p>
                 </div>
               </div>
             </div>
@@ -119,27 +119,27 @@ export default function AboutSection() {
         <ScrollReveal direction="up" delay={0.1} className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 pt-16 border-t border-white/10">
           <div className="text-center group">
             <p className="text-4xl md:text-5xl font-bold text-[#aa7217] font-playfair tracking-tight group-hover:scale-105 transition-transform duration-300">
-              3,200+
+              10+ Years
             </p>
-            <p className="text-xs uppercase tracking-wider text-gray-400 mt-2 font-inter">Global Alumni</p>
+            <p className="text-xs uppercase tracking-wider text-gray-400 mt-2 font-inter">Proven Expertise</p>
           </div>
           <div className="text-center group">
             <p className="text-4xl md:text-5xl font-bold text-[#aa7217] font-playfair tracking-tight group-hover:scale-105 transition-transform duration-300">
-              18
+              Jos, PL
             </p>
-            <p className="text-xs uppercase tracking-wider text-gray-400 mt-2 font-inter">Average Class Size</p>
+            <p className="text-xs uppercase tracking-wider text-gray-400 mt-2 font-inter">Academy Base</p>
           </div>
           <div className="text-center group">
             <p className="text-4xl md:text-5xl font-bold text-[#aa7217] font-playfair tracking-tight group-hover:scale-105 transition-transform duration-300">
-              98%
+              100s
             </p>
-            <p className="text-xs uppercase tracking-wider text-gray-400 mt-2 font-inter">Placement Success</p>
+            <p className="text-xs uppercase tracking-wider text-gray-400 mt-2 font-inter">Outstanding Graduates</p>
           </div>
           <div className="text-center group">
             <p className="text-4xl md:text-5xl font-bold text-[#aa7217] font-playfair tracking-tight group-hover:scale-105 transition-transform duration-300">
-              3
+              100%
             </p>
-            <p className="text-xs uppercase tracking-wider text-gray-400 mt-2 font-inter">Michelin Star Faculty</p>
+            <p className="text-xs uppercase tracking-wider text-gray-400 mt-2 font-inter">Hands-on Success</p>
           </div>
         </ScrollReveal>
 
