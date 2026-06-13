@@ -36,10 +36,10 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 w-full z-50 flex flex-col">
       {/* TOP SLIM NAVBAR */}
       <div 
-        className={`w-full transition-all duration-500 border-b border-[#aa7217]/10 ${
-          scrolled 
-            ? 'py-1.5 bg-[#050505]/95 backdrop-blur-md' 
-            : 'py-2 bg-[#050505]/60 backdrop-blur-sm'
+        className={`w-full transition-all duration-500 ${
+          scrolled || mobileMenuOpen
+            ? 'py-1.5 bg-[#050505]/95 backdrop-blur-md border-b border-[#aa7217]/10' 
+            : 'py-2 bg-transparent border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -77,9 +77,11 @@ export default function Header() {
       {/* MAIN NAVBAR */}
       <div 
         className={`w-full transition-all duration-500 ${
-          scrolled 
-            ? 'py-2 bg-[#050505]/80 backdrop-blur-xl border-b border-[#aa7217]/15 shadow-[0_4px_30px_rgba(0,0,0,0.8)]' 
-            : 'py-4 xl:bg-transparent bg-[#050505]/90 xl:backdrop-blur-none backdrop-blur-md border-b border-transparent xl:border-transparent'
+          scrolled
+            ? 'py-2 bg-[#050505]/85 backdrop-blur-xl border-b border-[#aa7217]/15 shadow-[0_4px_30px_rgba(0,0,0,0.8)]'
+            : mobileMenuOpen
+              ? 'py-4 bg-[#050505]/98 backdrop-blur-xl border-b border-transparent'
+              : 'py-4 bg-transparent border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
