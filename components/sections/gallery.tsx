@@ -15,36 +15,60 @@ interface GalleryImage {
 const galleryImages: GalleryImage[] = [
   {
     id: 1,
+    title: 'Professional Knife Skills Lab',
+    category: 'Techniques',
+    image: '/gallery-2.png',
+  },
+  {
+    id: 2,
+    title: 'Chef Masterclass and Culinary Prep',
+    category: 'Facilities',
+    image: '/gallery-1.png',
+  },
+  {
+    id: 3,
+    title: 'Collaborative Hot Kitchen Station',
+    category: 'Cuisine',
+    image: '/gallery-3.png',
+  },
+  {
+    id: 4,
+    title: 'Mixology & Beverage Presentation',
+    category: 'Sommelier',
+    image: '/gallery-4.png',
+  },
+  {
+    id: 5,
     title: 'Advanced Plating Geometry',
     category: 'Techniques',
     image: 'https://images.unsplash.com/photo-1574085733277-851d9d856a3a?q=80&w=800&auto=format&fit=crop',
   },
   {
-    id: 2,
+    id: 6,
     title: 'Artisanal Patisserie Craft',
     category: 'Pastry',
     image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop',
   },
   {
-    id: 3,
+    id: 7,
     title: 'Sensory Wine Profiling',
     category: 'Sommelier',
     image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=800&auto=format&fit=crop',
   },
   {
-    id: 4,
+    id: 8,
     title: 'Precision Searing & Saucier Work',
     category: 'Cuisine',
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop',
   },
   {
-    id: 5,
+    id: 9,
     title: 'Modern Culinary Lab Ateliers',
     category: 'Facilities',
     image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800&auto=format&fit=crop',
   },
   {
-    id: 6,
+    id: 10,
     title: 'Grand Graduation Banquet',
     category: 'Events',
     image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=800&auto=format&fit=crop',
@@ -55,7 +79,7 @@ export default function GallerySection() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
-  const categories = ['All', 'Techniques', 'Pastry', 'Cuisine', 'Facilities', 'Events']
+  const categories = ['All', 'Techniques', 'Pastry', 'Cuisine', 'Sommelier', 'Facilities', 'Events']
   const filteredImages = selectedCategory === 'All' 
     ? galleryImages 
     : galleryImages.filter(img => img.category === selectedCategory)

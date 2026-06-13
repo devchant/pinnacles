@@ -32,27 +32,14 @@ export default function Page() {
     }
   }, [showSplash])
 
-  // Mobile Failsafe in page.tsx: force disable splash if it remains active on mobile for > 5s
-  useEffect(() => {
-    const isMobileDevice = typeof window !== 'undefined' && window.innerWidth < 768
-    if (isMobileDevice && showSplash) {
-      const failsafeTimer = setTimeout(() => {
-        console.log("Mobile failsafe triggered in page.tsx")
-        setShowSplash(false)
-        document.body.classList.remove('loading')
-      }, 5000)
-      return () => clearTimeout(failsafeTimer)
-    }
-  }, [showSplash])
-
-  // GLOBAL FINAL SAFETY NET: After 12 seconds from app launch, force homepage visibility
+  // GLOBAL FINAL SAFETY NET: After 60 seconds, force homepage visibility as last resort
   useEffect(() => {
     const safetyNet = setTimeout(() => {
-      console.log("Final 12-second safety net triggered. Forcing homepage visibility.")
+      console.log("Final 60-second safety net triggered. Forcing homepage visibility.")
       setShowSplash(false)
       document.body.classList.remove('loading')
       document.body.style.overflow = 'unset'
-    }, 12000)
+    }, 60000)
 
     return () => clearTimeout(safetyNet)
   }, [])
