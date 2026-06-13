@@ -78,25 +78,27 @@ export default function CinematicLoader({ onIntroEnd }: CinematicLoaderProps) {
         fetchPriority="high"
       />
 
-      {/* Video Element */}
-      <video
-        ref={videoRef}
-        src={videoSrc}
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        onCanPlay={handleVideoCanPlay}
-        onCanPlayThrough={handleVideoCanPlay}
-        onLoadedData={handleVideoCanPlay}
-        onEnded={() => {
-          console.log("Intro video finished. Dissolving to homepage.")
-          setPhase('dissolving')
-        }}
-        className={`absolute inset-0 w-full h-full object-cover pointer-events-none transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${
-          phase === 'playing-video' ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-[1.12] blur-[20px]'
-        }`}
-      />
+      {/* Video Container — 20% less zoomed on mobile */}
+      <div className="absolute inset-0 scale-[0.8] md:scale-100 origin-center">
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          onCanPlay={handleVideoCanPlay}
+          onCanPlayThrough={handleVideoCanPlay}
+          onLoadedData={handleVideoCanPlay}
+          onEnded={() => {
+            console.log("Intro video finished. Dissolving to homepage.")
+            setPhase('dissolving')
+          }}
+          className={`w-full h-full object-cover pointer-events-none transition-all duration-[1500ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${
+            phase === 'playing-video' ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-[1.12] blur-[20px]'
+          }`}
+        />
+      </div>
 
       {/* PHASE 1 - Initial Loading State Overlay (Logo + Tagline) */}
       <div
