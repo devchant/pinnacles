@@ -23,7 +23,7 @@ export default function CinematicLoader({ onIntroEnd }: CinematicLoaderProps) {
     setIsMobile(mobileActive)
     
     const src = mobileActive
-      ? 'https://res.cloudinary.com/dlctwbems/video/upload/f_auto,q_auto/v1781139356/Firefly_779856_1.mp4'
+      ? 'https://res.cloudinary.com/dlctwbems/video/upload/f_auto,q_auto/v1781368372/Firefly_A_close-up_of_a_liquid_transforming_smoothly_zooming_in_towards_the_subject_while_the_backg.mp4'
       : 'https://res.cloudinary.com/dlctwbems/video/upload/f_auto,q_auto/v1781139653/Firefly_779856.mp4'
     
     setVideoSrc(src)
