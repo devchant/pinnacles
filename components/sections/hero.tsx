@@ -94,13 +94,13 @@ export default function HeroSection() {
 
             {/* Description */}
             <p className="subheading max-w-xl leading-relaxed text-gray-300">
-              Enter the world’s elite culinary academy. Learn heritage techniques alongside avant-garde gastronomy under the guidance of legendary Michelin-star masters.
+              Enter the world’s elite culinary academy. Learn heritage techniques alongside avant-garde gastronomy under the guidance of expert, industry-leading chefs.
             </p>
 
             {/* Premium CTA Buttons with subtle glow & magnetic scales */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
-                href="#admissions"
+                href="/apply"
                 className="btn-primary group text-center gap-2 text-sm"
               >
                 <span>Start Your Culinary Journey</span>

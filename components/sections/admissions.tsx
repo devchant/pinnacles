@@ -172,7 +172,7 @@ export default function AdmissionsSection() {
               </div>
 
               <div className="space-y-4">
-                <a href="#contact" className="btn-primary w-full text-center text-xs uppercase tracking-wider font-semibold py-3.5">
+                <a href="/apply" className="btn-primary w-full text-center text-xs uppercase tracking-wider font-semibold py-3.5">
                   Begin Registration
                 </a>
                 <a href="#contact" className="btn-secondary w-full text-center text-xs uppercase tracking-wider font-semibold py-3.5">

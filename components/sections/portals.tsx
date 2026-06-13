@@ -129,12 +129,12 @@ export default function PortalsSection() {
             </div>
             
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 w-full">
-              <button className="btn-gold text-xs uppercase tracking-wider font-semibold py-3 w-full">
+              <a href="/portal-login" className="btn-gold text-center text-xs uppercase tracking-wider font-semibold py-3 w-full">
                 Student Sign In
-              </button>
-              <button className="btn-secondary text-xs uppercase tracking-wider font-semibold py-3 w-full">
+              </a>
+              <a href="/portal-login" className="btn-secondary text-center text-xs uppercase tracking-wider font-semibold py-3 w-full">
                 Alumni Registry
-              </button>
+              </a>
             </div>
           </div>
         </ScrollReveal>

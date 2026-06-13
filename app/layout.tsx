@@ -34,24 +34,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Pinnacle Culinary Academy - Master the Art of Fine Dining',
-  description: 'Elevate your culinary expertise at the world\'s premier culinary academy. Learn from michelin-star chefs, explore innovative techniques, and build your culinary legacy.',
-  generator: 'v0.app',
+  description: 'Elevate your culinary expertise at Pinnacle Culinary Academy. Learn from expert chefs, gain hands-on experience, and build your culinary career from Jos, Plateau State, Nigeria.',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
 }
 

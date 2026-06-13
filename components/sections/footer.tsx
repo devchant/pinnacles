@@ -117,8 +117,7 @@ export default function Footer() {
               <h3 className="font-playfair text-sm font-semibold text-[#FAF9F6]">Resources</h3>
               <ul className="space-y-2">
                 <li><a href="#portals" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Escoffier Database</a></li>
-                <li><a href="#portals" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Student Hub Portal</a></li>
-                <li><a href="#portals" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Alumni Network Registry</a></li>
+                <li><a href="/portal-login" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Student Hub Portal</a></li>
                 <li><a href="#about" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Academic Ateliers</a></li>
                 <li><a href="#contact" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Inquiries & Tours</a></li>
               </ul>
@@ -129,7 +128,7 @@ export default function Footer() {
               <h3 className="font-playfair text-sm font-semibold text-[#FAF9F6]">Corporate</h3>
               <ul className="space-y-2">
                 <li><a href="#about" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Our Heritage</a></li>
-                <li><a href="#admissions" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Admissions Office</a></li>
+                <li><a href="/apply" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Admissions Office</a></li>
                 <li><a href="#" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Careers at Pinnacle</a></li>
                 <li><a href="#" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Privacy Policy</a></li>
                 <li><a href="#" className="text-xs text-gray-400 hover:text-[#aa7217] transition-colors font-inter">Terms of Service</a></li>
